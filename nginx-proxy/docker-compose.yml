@@ -12,7 +12,7 @@ services:
             - "443:443"
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
-            - /etc/nginx/certs:/etc/nginx/certs
+            - ./nginx-certs:/etc/nginx/certs
         restart: unless-stopped
 
 networks:

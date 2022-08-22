@@ -44,9 +44,7 @@ apt install -y \
     docker-compose-plugin
 
 #-------------------------------------------------------------------------------
-# Additional setup for the Nginx reverse proxy server
+# Create the network for the Nginx reverse proxy server
 #-------------------------------------------------------------------------------
-
-mkdir /etc/nginx/certs
 
 docker network create nginx-proxy
