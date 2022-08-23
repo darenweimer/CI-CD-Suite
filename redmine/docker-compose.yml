@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+
+    redmine:
+        container_name: redmine
+        image: redmine
+        environment:
+            # LETSENCRYPT_HOST: redmine.domain.com
+            # VIRTUAL_HOST: redmine.domain.com
+            VIRTUAL_PORT: 3000
+            REDMINE_DB_POSTGRES: database
+            REDMINE_DB_USERNAME: redmine
+            # REDMINE_DB_PASSWORD: password
+        volumes:
+            - /usr/src/redmine/files
+        restart: unless_stopped
+
+    database:
+        container_name: database
+        image: postgres:14
+        environment:
+            POSTGRES_USER: redmine
+            # POSTGRES_PASSWORD: password
+        volumes:
+            - /var/lib/postgresql/data
+        restart: unless_stopped
+
+networks:
+    default:
+        name: nginx-proxy
+        external: true
