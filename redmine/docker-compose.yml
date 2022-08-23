@@ -14,7 +14,7 @@ services:
             # REDMINE_DB_PASSWORD: password
         volumes:
             - /usr/src/redmine/files
-        restart: unless_stopped
+        restart: unless-stopped
 
     database:
         container_name: database
@@ -24,7 +24,7 @@ services:
             # POSTGRES_PASSWORD: password
         volumes:
             - /var/lib/postgresql/data
-        restart: unless_stopped
+        restart: unless-stopped
 
 networks:
     default:
