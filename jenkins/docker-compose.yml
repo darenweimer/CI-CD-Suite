@@ -10,14 +10,10 @@ services:
         #     VIRTUAL_HOST: jenkins.domain.com
         #     VIRTUAL_PORT: 8080
         volumes:
-            - jenkins_home:/var/jenkins
+            - /var/jenkins
         restart: unless-stopped
 
 networks:
     default:
         name: nginx-proxy
         external: true
-
-volumes:
-    jenkins_home:
-        name: jenkins-var_jenkins
