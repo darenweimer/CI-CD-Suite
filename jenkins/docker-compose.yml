@@ -6,6 +6,7 @@ services:
         container_name: jenkins
         image: jenkins/jenkins
         # environment:
+        #     LETSENCRYPT_HOST: jenkins.domain.com
         #     VIRTUAL_HOST: jenkins.domain.com
         #     VIRTUAL_PORT: 8080
         volumes:
