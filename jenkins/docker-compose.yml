@@ -10,7 +10,7 @@ services:
         #     VIRTUAL_HOST: jenkins.domain.com
         #     VIRTUAL_PORT: 8080
         volumes:
-            - /var/jenkins
+            - /var/jenkins_home
         restart: unless-stopped
 
 networks:
