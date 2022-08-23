@@ -11,3 +11,4 @@ docker compose -f nginx-proxy/docker-compose.yml up -d
 #-------------------------------------------------------------------------------
 
 docker compose -f jenkins/docker-compose.yml -f jenkins/docker-compose.override.yml up -d
+docker compose -f redmine/docker-compose.yml -f redmine/docker-compose.override.yml up -d
