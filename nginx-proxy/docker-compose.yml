@@ -9,9 +9,9 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - /etc/nginx/certs
-            - /etc/nginx/vhost.d
-            - /usr/share/nginx/html
+            - certs:/etc/nginx/certs
+            - vhost.d:/etc/nginx/vhost.d
+            - html:/usr/share/nginx/html
             - /var/run/docker.sock:/tmp/docker.sock:ro
         restart: unless-stopped
 
@@ -27,3 +27,11 @@ networks:
     default:
         name: nginx-proxy
         external: true
+
+volumes:
+    certs:
+        name: nginx-proxy___etc_nginx_certs
+    vhost.d:
+        name: nginx-proxy___etc_nginx_vhost.d
+    html:
+        name: nginx-proxy___usr_share_nginx_html

@@ -13,7 +13,7 @@ services:
             REDMINE_DB_USERNAME: redmine
             # REDMINE_DB_PASSWORD: password
         volumes:
-            - /usr/src/redmine/files
+            - files:/usr/src/redmine/files
         restart: unless-stopped
 
     database:
@@ -23,10 +23,16 @@ services:
             POSTGRES_USER: redmine
             # POSTGRES_PASSWORD: password
         volumes:
-            - /var/lib/postgresql/data
+            - database:/var/lib/postgresql/data
         restart: unless-stopped
 
 networks:
     default:
         name: nginx-proxy
         external: true
+
+volumes:
+    files:
+        name: redmine___usr_src_redmine_files
+    database:
+        name: redmine-database___var_lib_postgresql_data
