@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+
+    vault:
+        container_name: vault
+        image: vault
+        environment:
+            # LETSENCRYPT_HOST: vault.domain.com
+            # VIRTUAL_HOST: vault.domain.com
+            VIRTUAL_PORT: 8200
+        volumes:
+            - config:/vault/config
+            - file:/vault/file
+            - logs:/vault/logs
+            - ./vault.json:/vault.json:ro
+        cap_add:
+            - IPC_LOCK
+        entrypoint: vault server -config=/vault.json
+        restart: unless-stopped
+
+networks:
+    default:
+        name: nginx-proxy
+        external: true
+
+volumes:
+    config:
+        name: vault___vault_config
+    file:
+        name: vault___vault_file
+    logs:
+        name: vault___vault_logs
